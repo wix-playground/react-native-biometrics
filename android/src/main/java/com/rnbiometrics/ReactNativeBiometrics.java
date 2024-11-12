@@ -56,6 +56,10 @@ public class ReactNativeBiometrics extends ReactContextBaseJavaModule {
                 BiometricManager biometricManager = BiometricManager.from(reactApplicationContext);
                 int canAuthenticate = biometricManager.canAuthenticate(getAllowedAuthenticators(allowDeviceCredentials));
 
+                Log.d("isSensorAvailable", "allowDeviceCredentials: " + allowDeviceCredentials);
+                Log.d("isSensorAvailable", "getAllowedAuthenticators: " + getAllowedAuthenticators(allowDeviceCredentials) + " BIOMETRIC_STRONG: " + BiometricManager.Authenticators.BIOMETRIC_STRONG + " BIOMETRIC_WEAK: " + BiometricManager.Authenticators.BIOMETRIC_WEAK + " DEVICE_CREDENTIAL: " + BiometricManager.Authenticators.DEVICE_CREDENTIAL);
+                Log.d("isSensorAvailable", "canAuthenticate: " + canAuthenticate");
+                
                 if (canAuthenticate == BiometricManager.BIOMETRIC_SUCCESS) {
                     WritableMap resultMap = new WritableNativeMap();
                     resultMap.putBoolean("available", true);
